@@ -1,5 +1,9 @@
-const claudinary = require('cloudinary').v2;
-const { config } = require('dotenv');
+// const claudinary = require('cloudinary').v2;
+// const { config } = require('dotenv');
+
+import { v2 as claudinary } from 'cloudinary';
+import { config } from 'dotenv';
+
 
 config();
 
@@ -9,4 +13,5 @@ claudinary.config({
     api_secret: process.env.CLAUDINARY_API_SECRET
 });
 
-module.exports = claudinary;
+// module.exports = claudinary;
+export default claudinary;

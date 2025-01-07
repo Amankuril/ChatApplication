@@ -1,7 +1,13 @@
-const dotenv = require("dotenv");
-const path = require("path");
-const User = require("../models/user.model");
-const { connectDB } = require("../lib/db");
+// const dotenv = require("dotenv");
+// const path = require("path");
+// const User = require("../models/user.model");
+// const { connectDB } = require("../lib/db");
+
+import dotenv from 'dotenv';
+import path from 'path';
+import User from '../models/user.model.js';
+import { connectDB } from '../lib/db.js';
+
 
 dotenv.config({path: path.resolve(__dirname, "../.env")});
 
