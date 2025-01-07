@@ -8,10 +8,13 @@
     "start-backend": "node backend/app.js"
   },
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "vite": "^6.0.7"
+  }
 }
