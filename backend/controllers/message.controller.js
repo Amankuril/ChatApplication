@@ -1,9 +1,15 @@
-const { getRecieversSocketId, io } = require('../lib/socket.js');
-const messageModel = require('../models/message.model');
-const userModel = require("../models/user.model.js");
-const cloudinary = require("cloudinary");
+// const { getRecieversSocketId, io } = require('../lib/socket.js');
+// const messageModel = require('../models/message.model');
+// const userModel = require("../models/user.model.js");
+// const cloudinary = require("cloudinary");
 
-module.exports.getUsersForSidebar = async (req, res) => {
+import { getRecieversSocketId, io } from '../lib/socket.js';
+import messageModel from '../models/message.model.js';
+import userModel from '../models/user.model.js';
+import cloudinary from 'cloudinary';
+
+
+export const getUsersForSidebar = async (req, res) => {
     try {
         const loggedInUserId = req.user._id;
         const filteredUsers = await userModel.find({ _id: { $ne: loggedInUserId } });
@@ -16,7 +22,7 @@ module.exports.getUsersForSidebar = async (req, res) => {
     }
 }
 
-module.exports.getMessages = async (req, res) => {
+export const getMessages = async (req, res) => {
     try {
         const { id: userToChatId } = req.params;
         const myId = req.user._id;
@@ -37,7 +43,7 @@ module.exports.getMessages = async (req, res) => {
     }
 }
 
-module.exports.sendMessage = async (req, res) => {
+export const sendMessage = async (req, res) => {
     try {
         const { text, image } = req.body;
         const { id: recieverId } = req.params;

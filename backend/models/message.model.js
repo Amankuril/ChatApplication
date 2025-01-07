@@ -1,4 +1,6 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
 
 const messageSchema = mongoose.Schema({
     senderId: {
@@ -24,4 +26,5 @@ const messageSchema = mongoose.Schema({
 
 const messageModel = mongoose.model('Message', messageSchema);
 
-module.exports = messageModel;
+// module.exports = messageModel;
+export default messageModel;

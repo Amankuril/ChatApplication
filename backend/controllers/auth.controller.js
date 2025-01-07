@@ -1,9 +1,15 @@
-const userModel = require("../models/user.model.js");
-const bcrypt = require("bcryptjs");
-const generateAuthToken = require("../lib/utils.js");
-const claudinary = require("../lib/cloudinary.js");
+// const userModel = require("../models/user.model.js");
+// const bcrypt = require("bcryptjs");
+// const generateAuthToken = require("../lib/utils.js");
+// const claudinary = require("../lib/cloudinary.js");
 
-module.exports.register = async (req, res, next) => {
+import userModel from "../models/user.model.js";
+import bcrypt from "bcryptjs";
+import  generateAuthToken  from "../lib/utils.js";
+import claudinary from "../lib/cloudinary.js";
+
+
+export const register = async (req, res, next) => {
 
     const { email, password, fullname } = req.body;
 
@@ -55,7 +61,7 @@ module.exports.register = async (req, res, next) => {
 
 }
 
-module.exports.login = async (req, res, next) => {
+export const login = async (req, res, next) => {
     const { email, password } = req.body;
 
     try {
@@ -90,7 +96,7 @@ module.exports.login = async (req, res, next) => {
     }
 }
 
-module.exports.logout = async (req, res, next) => {
+export const logout = async (req, res, next) => {
     try {
         res.cookie("token", "", { maxAge: 0 });
         res.status(200).json({ message: "logout successfully" });
@@ -100,7 +106,7 @@ module.exports.logout = async (req, res, next) => {
     }
 }
 
-module.exports.update = async (req, res, next) => {
+export const update = async (req, res, next) => {
     try {
         const { profilePic } = req.body;
         const userId = req.user._id;
@@ -120,10 +126,10 @@ module.exports.update = async (req, res, next) => {
     }
 }
 
-module.exports.checkAuth = async (req, res, next) => {
-    try{
+export const checkAuth = async (req, res, next) => {
+    try {
         res.status(200).json(req.user);
-    }catch(error){
+    } catch (error) {
         console.log("error in checkAuth controller", error.message);
         res.status(500).json({ message: "Internal server error" });
     }
